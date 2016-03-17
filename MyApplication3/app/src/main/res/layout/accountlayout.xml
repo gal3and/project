@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/account_fragment"
+        android:background="@android:color/white"
+        android:clickable="true">
+
+
+        <TextView
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:id="@+id/exchange_button"
+            android:text="환율"
+            android:layout_weight="10"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginRight="80dp"
+            android:layout_marginBottom="90dp"
+            android:background="@android:color/darker_gray"/>
+
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="60dp"
+            android:id="@+id/account_button"
+            android:text="가계부"
+            android:layout_weight="0.14"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="150dp"
+            android:background="@android:color/darker_gray"
+            />
+
+    </FrameLayout>
+
+
+
+</LinearLayout>

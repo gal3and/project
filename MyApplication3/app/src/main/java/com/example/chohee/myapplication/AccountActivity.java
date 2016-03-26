@@ -17,11 +17,11 @@ import android.widget.TextView;
 /**
  * Created by chohee on 2016-03-14.
  */
-public class AccountActivity extends android.support.v4.app.Fragment implements View.OnClickListener,FragmentManager.OnBackStackChangedListener{
+public class AccountActivity extends android.support.v4.app.Fragment implements View.OnClickListener, FragmentManager.OnBackStackChangedListener {
 
     @Override
     public void onResume() {
-        Log.d(getClass().getName(),"ONresume");
+        Log.d(getClass().getName(), "ONresume");
         super.onResume();
     }
 
@@ -33,20 +33,20 @@ public class AccountActivity extends android.support.v4.app.Fragment implements 
 
     @Override
     public void onStart() {
-        Log.d(getClass().getName(),"ONDEStart");
+        Log.d(getClass().getName(), "ONDEStart");
         super.onStart();
     }
 
     @Override
     public void onStop() {
-        Log.d(getClass().getName(),"ONDESTop");
+        Log.d(getClass().getName(), "ONDESTop");
         super.onStop();
     }
 
     @Override
     public void onAttach(Context context) {
 
-        Log.d(getClass().getName(),"ONattach");
+        Log.d(getClass().getName(), "ONattach");
         super.onAttach(context);
     }
 
@@ -58,7 +58,7 @@ public class AccountActivity extends android.support.v4.app.Fragment implements 
         final Bundle state = savedInstanceState;
 
         TextView b1 = (TextView) view.findViewById(R.id.account_button);
-        //Button b2 = (Button) view.findViewById(R.id.exchange_button);
+        TextView b2 = (TextView) view.findViewById(R.id.exchange_button);
 
         b1.setOnClickListener(new View.OnClickListener() {
                                   @Override
@@ -66,9 +66,24 @@ public class AccountActivity extends android.support.v4.app.Fragment implements 
 
                                       if (state == null) {
 
-                                          FragmentManager fragmentManager=getFragmentManager();
-                                          FragmentTransaction transaction=fragmentManager.beginTransaction();
-                                          transaction.replace(R.id.account_fragment,new Account_bnt_active()).commit();
+                                          FragmentManager fragmentManager = getFragmentManager();
+                                          FragmentTransaction transaction = fragmentManager.beginTransaction();
+                                          transaction.replace(R.id.account_fragment, new Account_bnt_active()).commit();
+                                          fragmentManager.popBackStack();
+                                      }
+                                  }
+                              }
+        );
+
+        b2.setOnClickListener(new View.OnClickListener() {
+                                  @Override
+                                  public void onClick(View v) {
+
+                                      if (state == null) {
+
+                                          FragmentManager fragmentManager = getFragmentManager();
+                                          FragmentTransaction transaction = fragmentManager.beginTransaction();
+                                          transaction.replace(R.id.account_fragment, new Exchage_bnt_active()).commit();
                                           fragmentManager.popBackStack();
                                       }
                                   }
@@ -78,23 +93,17 @@ public class AccountActivity extends android.support.v4.app.Fragment implements 
     }
 
 
-
-
-
-
-
-
     @Override
     public void onDestroy() {
-        Log.d(getClass().getName(),"ONDESTROY");
+        Log.d(getClass().getName(), "ONDESTROY");
         super.onDestroy();
     }
 
     @Nullable
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
-        Log.d(getClass().getName(),"oncreateView");
-        return inflater.inflate(R.layout.accountlayout,container,false);
+        Log.d(getClass().getName(), "oncreateView");
+        return inflater.inflate(R.layout.accountlayout, container, false);
     }
 
 

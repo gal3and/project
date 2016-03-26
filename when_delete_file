@@ -1,0 +1,18 @@
+first step.  go to git terminal
+
+second step. 
+
+follow direction.
+
+$ git rm -r --cached [file name or folder name that you want delete]    // stopping the trace to git.
+$ git commit -m "any notation...."  // this is commit instruction and not using vm edit.
+$ git push [your remote in file that you want delete] [your branch in file that you want delete] // and then commit.
+
+third step.
+
+$ git add [filename or foldername] // start again trace.
+                                  // it is really important!!! if you didn't, you can't catch deffrence any more.
+
+// in fact, this step is not how to delete folder or file easily.
+// it is nomal git use.
+// thank you for read!

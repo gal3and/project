@@ -4,15 +4,16 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -24,48 +25,70 @@ import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 
-public class Account_bnt_active extends android.support.v4.app.Fragment implements View.OnClickListener,Runnable {
+/**
+ * Created by chohee on 2016-03-26.
+ */
+public class Exchage_bnt_active extends android.support.v4.app.Fragment {
 
-
-    // Handler handler;
     final static String strUrl = "http://finance.daum.net/exchange/exchangeMain.daum?DA=TMZ";
-    private ListView listView = null;
     private ArrayList<exchageData> exchange_data_Arraylist;
-    private TextView start_bnt, end_bnt, input_bnt;
-    private EditText day_text, item_text, charge_text;
-    private Spinner national_spinner;
-    private TextView textView;
-
-
+    private EditText ex_text, input_text;
+    private Spinner C_national_spinner;
+    private ArrayAdapter<String> account_Adapter;
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        textView = (TextView) view.findViewById(R.id.exch);
-        textView.setTextSize(10);
-        charge_text = (EditText) view.findViewById(R.id.charge_text);
-        day_text = (EditText) view.findViewById(R.id.Date_Text);
-        item_text = (EditText) view.findViewById(R.id.item_text);
-        input_bnt = (TextView) view.findViewById(R.id.intput_button);
-        national_spinner = (Spinner) view.findViewById(R.id.spinner);
-        ArrayAdapter adapter = ArrayAdapter.createFromResource(getActivity(), R.array.national, android.R.layout.simple_spinner_dropdown_item);
-        national_spinner.setAdapter(adapter);
-        start_bnt = (TextView) view.findViewById(R.id.start_button);
-        end_bnt = (TextView) view.findViewById(R.id.end_button);
-        listView = (ListView) view.findViewById(R.id.my_account);
         exchange_data_Arraylist = new ArrayList<>();
-        national_spinner.setSelection(0);
+        ex_text = (EditText) view.findViewById(R.id.ex_field);
+        input_text = (EditText) view.findViewById(R.id.input_text);
+        C_national_spinner = (Spinner) view.findViewById(R.id.calculator_spinner);
+        ArrayAdapter adapter1 = ArrayAdapter.createFromResource(getActivity(), R.array.national, android.R.layout.simple_spinner_item);
+        C_national_spinner.setAdapter(adapter1);
+        new getExchageData().execute(strUrl);
 
-        // account_Adapter=new ArrayAdapter<String>(this,R.exchage_bnt_active.array_adapter,);
 
+        input_text.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
 
-        start_bnt.setOnClickListener(this);
-        end_bnt.setOnClickListener(this);
-        input_bnt.setOnClickListener(this);
+                    if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                        if (keyCode == KeyEvent.KEYCODE_DEL) {
+                            int index = findArrayLinstIndex();
+                            if (input_text.getText().equals("")) {
+                                ex_text.setText(0);
+                            } else {
+                                float result=Integer.parseInt(input_text.getText().toString())
+                                        * exchange_data_Arraylist.get(index).getEx_rate().floatValue() /exchange_data_Arraylist.get(index).getRate_won();
+                                String result_float= String.format("%,.2f",result);
+                                ex_text.setText(result_float);
+                            }
+                        }else {
+                            int index = findArrayLinstIndex();
+                            if (input_text.getText().equals("")) {
+                                ex_text.setText(0);
+                            }else{
+                                float result=Integer.parseInt(input_text.getText().toString())
+                                        * exchange_data_Arraylist.get(index).getEx_rate().floatValue() /exchange_data_Arraylist.get(index).getRate_won();
+                               String result_float= String.format("%,.2f",result);
+                                ex_text.setText(result_float);
+                            }
+                        }
+                    }
+
+                return false;
+            }
+        });
 
 
     }
 
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        Log.d(getClass().getName(), "oncreateView");
+        return inflater.inflate(R.layout.exchage_bnt_active, container, false);
+    }
 
     private StringBuffer downloadUrl(String myurl) {
         Log.d(getClass().getName(), "oncreateView");
@@ -100,54 +123,15 @@ public class Account_bnt_active extends android.support.v4.app.Fragment implemen
         }
     }
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Log.d(getClass().getName(), "oncreateView");
-        return inflater.inflate(R.layout.account_btn_active, container, false);
-    }
-
-
-    @Override
-    public void onClick(View v) {
-
-        switch (v.getId()) {
-            case R.id.intput_button:
-                break;
-            case R.id.start_button:
-                new getExchageData().execute(strUrl);
-                exchageData selectexData = new exchageData();
-                selectexData = findArrayLinstIndex(selectexData);
-                Log.d("click", selectexData.getCountry() + " " + String.valueOf(selectexData.getEx_rate()));
-                break;
-            case R.id.end_button:
-                new getExchageData().execute(strUrl);
-                break;
-        }
-    }
-
-    private exchageData findArrayLinstIndex(exchageData Find_data) {
-
+    private int findArrayLinstIndex() {
+        int cnt = 0;
         for (exchageData d : exchange_data_Arraylist) {
-            Log.d("push",national_spinner.getSelectedItem().toString());
-
-            if (d.getCountry().equals(national_spinner.getSelectedItem().toString())) {
-                Find_data.setEx(d.getEx());
-                Find_data.setId(d.getId());
-                Find_data.setRate_won(d.getRate_won());
-                Find_data.setEx_full(d.getEx_full());
-                Find_data.setK_ex(d.getK_ex());
-                Find_data.setCountry(d.getCountry());
-                Find_data.setEx_rate(d.getEx_rate());
+            if (d.getCountry().equals(C_national_spinner.getSelectedItem().toString())) {
                 break;
             }
+            cnt++;
         }
-        return Find_data;
-    }
-
-    @Override
-    public void run() {
-
+        return cnt;
     }
 
     private class getExchageData extends AsyncTask<String, Void, StringBuffer> {
@@ -273,6 +257,7 @@ public class Account_bnt_active extends android.support.v4.app.Fragment implemen
 
                     if (exdata.getCountry() != null) {
                         exchange_data_Arraylist.add(exdata);
+                        exdata.display();
                     }
                 }
             } else {
@@ -346,13 +331,8 @@ public class Account_bnt_active extends android.support.v4.app.Fragment implemen
             this.country = country;
         }
 
-
+        public void display() {
+            Log.d("exdata", getCountry() + " " + getEx_rate() + " " + getEx() + " " + getId() + " " + getRate_won() + " " + getEx_full() + " " + getK_ex());
+        }
     }
-
-    private class myAccount_item {
-        String item_Titel;//품목
-        int charge;//가격
-        Long charge_won;//한국 가격
-    }
-
 }

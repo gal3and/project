@@ -24,11 +24,11 @@ import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 
-public class Account_bnt_active extends android.support.v4.app.Fragment implements View.OnClickListener,Runnable {
+public class Account_bnt_active extends android.support.v4.app.Fragment implements View.OnClickListener{
 
 
-    // Handler handler;
-    final static String strUrl = "http://finance.daum.net/exchange/exchangeMain.daum?DA=TMZ";
+
+    final static String strUrl = "http://finance.daum.net/exchange/exchangeMain.daum?DA=TMZ";  //정보를 가져올 url 
     private ListView listView = null;
     private ArrayList<exchageData> exchange_data_Arraylist;
     private TextView start_bnt, end_bnt, input_bnt;
@@ -143,11 +143,6 @@ public class Account_bnt_active extends android.support.v4.app.Fragment implemen
             }
         }
         return Find_data;
-    }
-
-    @Override
-    public void run() {
-
     }
 
     private class getExchageData extends AsyncTask<String, Void, StringBuffer> {

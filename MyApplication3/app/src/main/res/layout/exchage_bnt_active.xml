@@ -22,32 +22,31 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
+                android:layout_above="@+id/ex_result_1" />
 
             <Spinner
                 android:id="@+id/calculator_spinner_2"
                 android:layout_width="match_parent"
                 android:layout_height="94dp"
-                android:layout_below="@+id/calculator_spinner_1"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
-
-
-
-
-
-
+                android:layout_below="@+id/ex_result_1"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@+id/ex_field"
+                android:layout_above="@+id/ex_result_2"
+                android:layout_toLeftOf="@+id/ex_field" />
             <EditText
-                android:layout_width="match_parent"
+                android:layout_width="150dp"
                 android:layout_height="40dp"
                 android:inputType="number"
-                android:ems="10"
                 android:id="@+id/ex_field"
                 android:background="@android:color/darker_gray"
-                android:layout_below="@+id/calculator_spinner_2"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/calculator_spinner_1"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:clickable="true"
+                android:focusable="true"
+                />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
@@ -59,18 +58,17 @@
                 android:textSize="40px"/>
 
             <EditText
-                android:layout_width="match_parent"
+                android:layout_width="150dp"
                 android:layout_height="40dp"
-                android:ems="10"
                 android:id="@+id/input_text"
                 android:background="@android:color/holo_blue_light"
                 android:focusable="true"
                 android:clickable="true"
-                android:layout_below="@+id/ex_field"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginTop="66dp"
-                android:inputType="number"/>
+                android:inputType="number"
+                android:layout_below="@+id/ex_result_1"
+                android:layout_toRightOf="@+id/calculator_spinner_2"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -81,9 +79,6 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:textSize="40px"/>
-
-
-
 
         </RelativeLayout>
     </FrameLayout>

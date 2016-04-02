@@ -35,6 +35,7 @@ public class Exchage_bnt_active extends android.support.v4.app.Fragment {
     private EditText ex_text, input_text; 
     private Spinner C_national_spinner_1, C_national_spinner_2;   //국가명을 담은 스피너 
     private TextView ex_result_1, ex_result_2;  //환산 결과를 보여줄 텍스트뷰
+    final String[] index = {"쇼핑", "음식", "기념품", "기타"};
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) { //프레그먼트 이동시 호출.
@@ -53,8 +54,8 @@ public class Exchage_bnt_active extends android.support.v4.app.Fragment {
         C_national_spinner_2.setAdapter(adapter2); //스피네에 어뎁터를 세팅한다.
         C_national_spinner_1.setSelection(1);//이벤트까지 같이 부른다. 미국으로 설정
         C_national_spinner_2.setSelection(0); //한국으로 설정
-        C_national_spinner_1.setOnItemSelectedListener(new spinnerStateChange(1)); 		
-        C_national_spinner_2.setOnItemSelectedListener(new spinnerStateChange(2)); //스피너를 이용해 국사를 선택했을 때 이벤트 리스너와 연결		
+        C_national_spinner_1.setOnItemSelectedListener(new spinnerStateChange());
+        C_national_spinner_2.setOnItemSelectedListener(new spinnerStateChange()); //스피너를 이용해 국사를 선택했을 때 이벤트 리스너와 연결
         input_text.addTextChangedListener(textWatcher); //textWatcher를 이용하여 edittext의 문자열의 변화를 보고 환율에 따른 결과값을 계산해서 출력한다.
 	    ex_text.addTextChangedListener(textWatcher);
         input_text.setOnKeyListener(new keyStateChange()); //숫자값을 입력할 때 마다 키 리스너와 연결.
@@ -106,8 +107,6 @@ public class Exchage_bnt_active extends android.support.v4.app.Fragment {
                     * (exchange_data_Arraylist.get(index2).getEx_rate().floatValue()
                     / exchange_data_Arraylist.get(index1).getEx_rate().floatValue());
             String result_float = String.format("%,.2f", result);
-            String result_set=(result_float.substring(0, result_float.length() - 2).replace(",", "").replace(".", ""));
-            Log.d("result", result_set);
             ex_text.setText(result_float);
             ex_result_2.setText("");
             ex_result_1.setText("");
@@ -390,24 +389,14 @@ public class Exchage_bnt_active extends android.support.v4.app.Fragment {
 
     private class spinnerStateChange implements AdapterView.OnItemSelectedListener { //스피너가 바뀔 때마다 선택한 나라에 환율 값으로 변환.
 
-        private int flag;
-
-        public spinnerStateChange(int flag){//생성자로 변수를 지정해서 스퍼너가 선택될 때마다 구분이 가능하도록 한다.
-            this.flag=flag;
-        }
-
 
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             if ((input_text.getText().toString().length() != 0 || ex_text.getText().toString().length() != 0) && exchange_data_Arraylist.size() == MAX_SIZE_ARRAY_LIST) { //사용자가 아이템을 선택하고 input 텍스트가 비어있지 않다면 환율을 계산한다.
-               if(flag==2){
-                   calculatorEx_input_text();
-                   input_text.requestFocus();
-               }
-                else if(flag==1){
+
+
                    ex_text.requestFocus();
                    calculatorEx_ex_text();
-               }
             }
         }
         @Override

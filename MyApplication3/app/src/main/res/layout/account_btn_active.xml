@@ -13,16 +13,8 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/exch"
-                android:layout_width="50dp"
-                android:layout_height="40dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/spinner"
-                android:text="her" />
+            android:layout_height="match_parent"
+            android:layout_gravity="right|top">
 
             <Spinner
                 android:id="@+id/spinner"
@@ -55,63 +47,80 @@
                 android:background="@android:color/darker_gray"
                 android:text="시작" />
 
-            <EditText
-                android:id="@+id/charge_text"
-                android:layout_width="160dp"
-                android:layout_height="50dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/exch" />
-
-            <EditText
-                android:id="@+id/item_text"
-                android:layout_width="100dp"
-                android:layout_height="69dp"
-                android:layout_alignBottom="@+id/charge_text"
-                android:layout_toLeftOf="@+id/intput_button"
-                android:layout_toStartOf="@+id/intput_button"
-                android:background="@android:color/darker_gray" />
-
             <TextView
-                android:id="@+id/intput_button"
-                android:layout_width="71dp"
-                android:layout_height="69dp"
-                android:background="@android:color/darker_gray"
-                android:text="입력"
-                android:layout_above="@+id/Date_Text"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
+                android:id="@+id/budget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/budget_text_filed"
+                android:layout_toLeftOf="@+id/budget_text_filed"
+                android:layout_toStartOf="@+id/budget_text_filed"
+                android:onClick="onClick1"
+                android:text="예산   " />
 
-            <ListView
-                android:id="@+id/my_account"
+
+            <EditText
+                android:id="@+id/budget_text_filed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/spinner"
+                android:layout_toLeftOf="@+id/end_button"
+                android:layout_toStartOf="@+id/end_button"
+                android:background="@drawable/border"
+                android:clickable="true"
+                android:focusable="true"
+                android:hint="예산을 입력하려면 클릭하세요"
+                android:inputType="number"
+                android:onClick="onClick1"
+                android:outlineProvider="bounds"
+                android:text=""
+                android:layout_marginRight="10dp"/>
+
+            <TableLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@+id/Date_Text" />
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:id="@+id/budget_table"
+                android:layout_below="@+id/budget_text_filed">
 
-            <EditText
-                android:id="@+id/Date_Text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/charge_text"
-                android:ems="10"
-                android:inputType="date" />
+                <TableRow android:background="#3736FF">
 
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="date"
-                android:ems="10"
-                android:id="@+id/editText"
-                android:layout_above="@+id/Date_Text"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                    <TextView
+                        android:id="@+id/text1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="지출내역 입력"
+                        android:textSize="20dp" />
 
+                    <TextView
+                        android:id="@+id/spend_btn1"
+                        android:clickable="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="지출내역추가" />
+                </TableRow>
+
+                <TableRow>
+                    <TextView
+                        android:id="@+id/maintext"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        android:clickable="true"
+                        android:hint="날짜                   항목                  금액" />
+                </TableRow>
+                <TableRow>
+                    <ListView
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:id="@+id/buy_item_list_view"
+                        android:background="@android:color/holo_orange_dark"
+                        android:layout_span="2">
+
+                    </ListView>
+
+                </TableRow>
+
+            </TableLayout>
         </RelativeLayout>
     </FrameLayout>
 

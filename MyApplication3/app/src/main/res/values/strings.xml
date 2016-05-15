@@ -1,0 +1,95 @@
+<resources>
+    <string name="app_name">test</string>
+    <string name="action_settings">설정</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string-array name="national">
+        <item>미국</item>
+        <item>일본(100엔)</item>
+        <item>중국</item>
+        <item>유로</item>
+        <item>영국</item>
+        <item>스위스</item>
+        <item>캐나다</item>
+        <item>뉴질랜드</item>
+        <item>홍콩</item>
+        <item>브라질</item>
+        <item>멕시코</item>
+        <item>아랍에미리트</item>
+        <item>쿠웨이트</item>
+        <item>바레인</item>
+        <item>인도</item>
+        <item>사우디아라비아</item>
+        <item>노르웨이</item>
+        <item>덴마크</item>
+        <item>말레이지아</item>
+        <item>방글라데시</item>
+        <item>파키스탄</item>
+        <item>인도네시아(100루피아)</item>
+        <item>대만</item>
+        <item>필리핀</item>
+        <item>스웨덴</item>
+        <item>호주</item>
+        <item>싱가포르</item>
+        <item>태국</item>
+        <item>이집트</item>
+        <item>브루나이</item>
+        <item>이스라엘</item>
+        <item>요르단</item>
+        <item>베트남(100동)</item>
+        <item>러시아</item>
+        <item>헝가리</item>
+        <item>폴란드</item>
+        <item>남아프리카공화국</item>
+        <item>몽골</item>
+        <item>체코</item>
+        <item>카자흐스탄</item>
+        <item>카타르</item>
+        <item>터키</item>
+    </string-array>
+    <string-array name="ex_calculator_1">
+        <item>대한민국 KRW</item>
+        <item>미국 USD</item>
+        <item>일본 JPY100</item>
+        <item>중국 CNY</item>
+        <item>유로 EUR</item>
+        <item>영국 GBP</item>
+        <item>스위스 CHF</item>
+        <item>캐나다 CAD</item>
+        <item>뉴질랜드 NZD</item>
+        <item>홍콩 HKD</item>
+        <item>브라질 BRL</item>
+        <item>멕시코 MXN</item>
+        <item>아랍에미리트 AED</item>
+        <item>쿠웨이트 KWD</item>
+        <item>바레인 BHD</item>
+        <item>인도 INR</item>
+        <item>사우디아라비아 SAR</item>
+        <item>노르웨이 NOK</item>
+        <item>덴마크 DKK</item>
+        <item>말레이지아 MYR</item>
+        <item>방글라데시 BDT</item>
+        <item>파키스탄 PKR</item>
+        <item>인도네시아 IDR100</item>
+        <item>대만 TWD</item>
+        <item>필리핀 PHP</item>
+        <item>스웨덴 SEK</item>
+        <item>호주 AUD</item>
+        <item>싱가포르 SGD</item>
+        <item>태국 THB</item>
+        <item>이집트 EGP</item>
+        <item>브루나이 BND</item>
+        <item>이스라엘 ILS</item>
+        <item>요르단 JOD</item>
+        <item>베트남 VND100</item>
+        <item>러시아 RUB</item>
+        <item>헝가리 HUF</item>
+        <item>폴란드 PLN</item>
+        <item>남아프리카공화국 ZAR</item>
+        <item>몽골 MNT</item>
+        <item>체코 CZK</item>
+        <item>카자흐스탄 KZT</item>
+        <item>카타르 QAR</item>
+        <item>터키 TRY</item>
+    </string-array>
+    <string name="title_activity_setting">SettingActivity</string>
+</resources>

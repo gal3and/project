@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="이메일 정보 설정"
+        android:key="pref_key_email_setting"   >
+        <CheckBoxPreference
+            android:key="active_email"
+            android:summaryOn="이메일로 가계부 전송을 활성화 합니다."
+            android:summaryOff="이메일로 가계부 전송을 비활성화 합니다."
+            android:title="이메일 활성화"
+            />
+        <EditTextPreference
+            android:key="email_address"
+            android:dependency="active_email"
+            android:title="이메일 주소 설정"
+            android:summaryOn="이메일 주소 설정 완료"
+            android:summaryOff="이메일 주소 설정 비완료"
+         />
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="GPS 설정"
+        android:key="pref_key_gps_setting">
+        <SwitchPreference
+            android:key="active_gps"
+            android:summaryOn="GPS로 나라를 비설정합니다."
+            android:summaryOff="GPS로 나라를 설정합니다."
+            android:title="이메일 활성화"
+            android:defaultValue="false"
+            />
+        <ListPreference
+            android:title="나라선택(GPS 비활성화 시)"
+            android:key="nation_list"
+            android:dependency="active_gps"
+            android:entries="@array/national_pre"
+            android:entryValues="@array/national_pre"
+            android:defaultValue="대한민국"/>
+        </PreferenceCategory>
+        <PreferenceCategory
+            android:title="네트워크 설정"
+            android:key="pref_key_network_setting"   >
+            <CheckBoxPreference
+                android:key="active_wifi"
+                android:summaryOn="WIFI일 때만 네크워크 기능을 활성화 합니다."
+                android:summaryOff="WIFI가 아닐 때도 네크워크 기능을 활성화 합니다."
+                android:title="이메일 활성화"
+                />
+            </PreferenceCategory>
+    <PreferenceCategory android:title="어플 정보" >
+
+        <Preference
+            android:summary="개발자 정보를 확인합니다"
+            android:title="개발자 정보" >
+            <intent
+                android:targetClass=".MadeByFragment"
+                android:targetPackage="com.example.chohee.myapplication" />
+        </Preference>
+        <Preference
+            android:summary="개발자에게 메일을 보냅니다"
+            android:title="메일 보내기" >
+            <intent
+                android:action="android.intent.action.SENDTO"
+                android:data="mailto:dd" />
+        </Preference>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

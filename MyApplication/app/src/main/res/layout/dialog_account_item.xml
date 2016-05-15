@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:theme="@android:style/Theme.Holo.Light">
+
+    <DatePicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/datePicker"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="48dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="42dp"
+        android:theme="@android:style/Theme.NoTitleBar"
+        />
+
+    <Spinner
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:id="@+id/item_spinner"
+        android:layout_below="@+id/datePicker"
+        android:layout_alignLeft="@+id/datePicker"
+        android:layout_alignStart="@+id/datePicker"
+        android:layout_marginTop="10dp" />
+
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="항목"
+        android:textSize="20dp"
+        android:layout_above="@+id/item_price_field"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:inputType="number"
+          />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="가격"
+        android:textSize="20dp"
+        android:layout_alignBottom="@+id/item_price_field" />
+
+
+    <EditText
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:id="@+id/item_price_field"
+        android:layout_below="@+id/item_spinner"
+        android:layout_alignLeft="@+id/item_spinner"
+        android:layout_alignStart="@+id/item_spinner"
+        android:layout_marginTop="10dp"
+        android:inputType="number"/>
+
+</RelativeLayout>

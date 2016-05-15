@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="60dp" android:background="@color/c12">
+
+    <android.support.v7.widget.SwitchCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/active_wifi"
+        android:text="wifi 상태 일때만 네트워크 기능 활성화"
+        android:textSize="15dp"
+        android:layout_marginRight="58dp"
+        android:layout_marginEnd="58dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp"/>
+
+
+
+</RelativeLayout>

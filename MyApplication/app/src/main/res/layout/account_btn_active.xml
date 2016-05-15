@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/account_btn_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:clickable="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="right|top">
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="150dp"
+                android:layout_height="94dp"
+                android:layout_alignBottom="@+id/end_button"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@+id/end_button"
+                android:layout_toStartOf="@+id/end_button" />
+
+            <TextView
+                android:id="@+id/end_button"
+                android:layout_width="56dp"
+                android:layout_height="61dp"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@+id/start_button"
+                android:layout_toStartOf="@+id/start_button"
+                android:background="@android:color/darker_gray"
+                android:text="종료" />
+
+            <TextView
+                android:id="@+id/start_button"
+                android:layout_width="56dp"
+                android:layout_height="61dp"
+                android:layout_alignBottom="@+id/end_button"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:background="@android:color/darker_gray"
+                android:text="시작" />
+
+            <TextView
+                android:id="@+id/budget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/budget_text_filed"
+                android:layout_toLeftOf="@+id/budget_text_filed"
+                android:layout_toStartOf="@+id/budget_text_filed"
+                android:text="예산   " />
+
+
+            <TextView
+                android:id="@+id/budget_text_filed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/spinner"
+                android:layout_toLeftOf="@+id/end_button"
+                android:layout_toStartOf="@+id/end_button"
+                android:background="@drawable/border"
+                android:clickable="true"
+                android:focusable="true"
+                android:hint="예산을 입력하려면 클릭하세요"
+                android:inputType="number"
+                android:outlineProvider="bounds"
+                android:text=""
+                android:layout_marginRight="10dp"/>
+
+
+                    <TextView
+                        android:id="@+id/spend_btn1"
+                        android:clickable="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:text="지출내역추가"
+                        android:layout_below="@+id/budget_text_filed"
+                        android:layout_marginTop="10dp"
+                        android:textAlignment="gravity"
+                        android:gravity="end"/>
+
+                    <TextView
+                        android:id="@+id/content_item"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_margin="10dp"
+                        android:clickable="false"
+                        android:hint="날짜                   항목                       금액"
+                        android:layout_below="@+id/spend_btn1"
+                       />
+
+                    <ListView
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:id="@+id/buy_item_list_view"
+                        android:divider="@color/colorDivider"
+                        android:dividerHeight="@dimen/divider"
+                        android:layout_span="2"
+                        android:layout_marginTop="3dp"
+                        android:layout_below="@+id/content_item"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                      />
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|bottom"
+                android:src="@android:drawable/ic_dialog_email"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_margin="@dimen/fab_margin"
+               />
+
+        </RelativeLayout>
+    </FrameLayout>
+
+
+</LinearLayout>

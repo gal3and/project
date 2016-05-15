@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="135dp" android:background="@color/c10">
+
+
+     <EditText
+         android:layout_width="180dp"
+         android:layout_height="40dp"
+         android:hint="이메일 주소"
+         android:id="@+id/email_id"
+         android:textSize="20dp"
+         android:layout_alignParentTop="true"
+         android:layout_marginTop="20dp"
+         android:layout_marginLeft="10dp"/>
+
+    <Spinner
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:id="@+id/email_domain"
+        android:layout_toRightOf="@+id/email_id"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        />
+
+    <android.support.v7.widget.SwitchCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/active_email"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/email_domain"
+        android:layout_alignRight="@+id/email_domain"
+        android:layout_alignEnd="@+id/email_domain"
+        android:text="이메일 활성화"
+        android:textSize="20dp"/>
+
+    <EditText
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        android:id="@+id/self_email_domain"
+        android:textSize="20dp"
+        android:layout_alignBottom="@+id/active_email"
+        android:layout_alignLeft="@+id/email_id"
+        android:layout_alignStart="@+id/email_id"
+        android:clickable="false"/>
+
+
+</RelativeLayout>

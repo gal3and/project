@@ -1,11 +1,11 @@
 # project
 
 this project team name is gal3 R .
+
 we will Make android application about travel.
 
 -version-
-languge:
+languge: JAVA
 tool: eclipse android JDK
 DBMS: SQLlite
-jdbc :
-jdc:
+API : 
